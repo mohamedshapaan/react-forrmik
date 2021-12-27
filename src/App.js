@@ -1,25 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import {Component} from "react";
+import { Field, Formik } from 'formik';
+class App extends Component{
+  valo=(props)=>{
+    console.log(props);
+  }
+  fomy=(props)=>{
+    return<form onSubmit={props.handleSubmit} >
+      <Field  type="email" name="email" required></Field>
+      <Field  type="password" name="pass" required></Field>
+      <button type='submit'>submit</button>
+    </form>
+  }
+  render(){
+    return <div>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formik
+        initialValues={{email:"fdbfdbdf",
+                        pass:"ngnbtg",
+                      }}
+        onSubmit={this.valo}
+        render={this.fomy}
+      />
     </div>
-  );
+  }
 }
 
 export default App;
